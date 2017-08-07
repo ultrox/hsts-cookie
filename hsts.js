@@ -5,13 +5,16 @@ var hsts = {
     tokenHex: null,
     tokenBin: null,
     tokenArray: [],
+    test: function() {
+        return this.hostname.slice(1,);
+    }
     hostname: '[HOSTNAME]',
     doTest: true,
     i: 0,
 
     init: function () {
         // drop a test token to see if they've been here before
-        hsts.httpGet('http://wts.' + hsts.hostname + '/h.gif');
+        hsts.httpGet('http://wts.' + hsts.test() + '/h.gif');
     },
 
     generateToken: function () {
@@ -30,7 +33,7 @@ var hsts = {
         // request the test token as https so we can test whether their
         // next visit is a return - we will read the tokens on their next visit
         hsts.doTest = false;
-        hsts.httpGet('https://wts.' + hsts.hostname + '/h.gif');
+        hsts.httpGet('https://wts.' + hsts.test() + '/h.gif');
 
         // now drop a unique set of individual tokens as https
         for (i = 0; i < hsts.tokenBin.length; i += 1) {
