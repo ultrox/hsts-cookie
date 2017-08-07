@@ -7,7 +7,7 @@ var hsts = {
     tokenArray: [],
     test: function() {
         return this.hostname.slice(1,);
-    }
+    },
     hostname: '[HOSTNAME]',
     doTest: true,
     i: 0,
